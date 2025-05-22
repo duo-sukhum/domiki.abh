@@ -1,0 +1,597 @@
+/* Общие стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f2f7;
+    color: #333;
+    line-height: 1.6;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+main {
+    background-color: #e0f2f7;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Шапка */
+header {
+    background-color: #005fa3;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1.1em;
+}
+
+/* Навигация */
+nav {
+    background-color: #005fa3;
+    padding: 0; /* Убрал padding, т.к. он теперь на .container внутри nav */
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.5s ease;
+}
+
+nav .container {
+    display: flex; /* Используем flexbox для выравнивания гамбургера и ссылок */
+    justify-content: center; /* Распределяем элементы по краям */
+    align-items: center; /* Выравниваем по центру по вертикали */
+    padding: 10px 20px; /* Добавляем padding для контейнера навигации */
+}
+
+/* Скрываем обычные ссылки на мобильных и показываем их на больших экранах */
+.nav-links {
+    display: flex; /* Ссылки отображаются горизонтально на больших экранах */
+    gap: 5px; /* Отступ между ссылками */
+}
+
+nav a {    
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 15px; /* Немного уменьшил padding для ссылок */
+    border-radius: 5px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    display: inline-block;
+}
+
+nav a:hover, nav a.active {
+    background-color: #0077cc;
+    color: #fff;
+}
+
+/* Стили для кнопки-гамбургера */
+.hamburger-menu {
+    display: none; /* Скрываем гамбургер по умолчанию на больших экранах */
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    z-index: 101; /* Выше nav-links, чтобы можно было кликнуть */
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    position: absolute; /* Для анимации крестика */
+    left: 0;
+}
+
+.hamburger-menu .bar:nth-child(1) { top: 0; }
+.hamburger-menu .bar:nth-child(2) { top: 11px; }
+.hamburger-menu .bar:nth-child(3) { top: 22px; }
+
+/* Анимация гамбургера в крестик (при активном состоянии) */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Секции */
+section {
+    padding: 6px 0; /* Общий padding для секций */
+    border-bottom: 1px solid #ccc;
+    transition: border-color 0.5s ease;
+    background-color: #e0f2f7;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+section h2 {
+    text-align: center;
+    color: #005fa3;
+    margin-bottom: 30px;
+    font-size: 2em;
+    transition: color 0.5s ease;
+}
+
+/* Секция "О нас" */
+#about .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+}
+
+#about .text-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+#about img {
+    flex: 1;
+    max-width: 100%;
+    min-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.5s ease;
+}
+
+#about img:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Секция "Наши домики" */
+.houses-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.house-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    width: 250px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.house-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    border-color: #0077cc;
+}
+
+.house-card img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: opacity 0.3s ease-in-out;
+    aspect-ratio: 1 / 1;
+}
+
+.house-card img:hover {
+    opacity: 0.9;
+}
+
+.house-card h3 {
+    color: #0077cc;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.house-card p {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.house-card p strong {
+    font-size: 1em;
+}
+
+.house-card:hover h3 {
+    color: #005fa3;
+}
+
+/* Секция "Цены и бронирование" */
+#pricing table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#pricing table th,
+#pricing table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#pricing th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+#pricing tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+#pricing tr:hover td {
+    background-color: #e6f7ff;
+    border-color: #0077cc;
+    color: #005fa3;
+}
+
+.booking-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.booking-form:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.booking-form h3 {
+    text-align: center;
+    color: #005fa3;
+    margin-bottom: 20px;
+}
+
+.booking-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="email"],
+.booking-form input[type="date"],
+.booking-form input[type="number"],
+.booking-form textarea,
+.booking-form select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.booking-form input[type="text"]:focus,
+.booking-form input[type="email"]:focus,
+.booking-form input[type="date"]:focus,
+.booking-form input[type="number"]:focus,
+.booking-form textarea:focus,
+.booking-form select:focus {
+    border-color: #0077cc;
+    outline: none;
+}
+
+.booking-form input[type="submit"] {
+    background-color: #0077cc;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    display: block;
+    margin: 20px auto 0;
+}
+
+.booking-form input[type="submit"]:hover {
+    background-color: #005fa3;
+    color: #fff;
+}
+
+/* Секция "Галерея" */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.02); /* Немного уменьшил scale, чтобы не сильно выходило за границы */
+    box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+
+/* Секция "Контакты" */
+#contact p {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+#contact .social-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#contact .social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.5em;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+#contact .social-links a:hover {
+    opacity: 1;
+}
+
+#contact .social-links img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+#contact .social-links img:hover {
+    transform: translateY(-3px);
+}
+
+/* Подвал */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    /* Убрал стили nav a, они теперь внутри .nav-links.active */
+    /* nav a {
+        padding: 8px 12px;
+        margin: 5px 2px;
+        display: block;
+        width: calc(100% - 10px);
+    } */
+
+    #about .about-content {
+        flex-direction: column;
+    }
+
+    .booking-form input[type="submit"] {
+        width: 100%;
+    }
+
+    #pricing table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* === Стили для адаптации гамбургер-меню (вставлены сюда) === */
+    nav .container {
+        flex-direction: row; /* Навигация останется строкой для контейнера */
+        justify-content: space-between; /* Распределяем гамбургер и, если что, лого */
+        padding: 10px 15px; /* Немного уменьшим padding навигационного контейнера */
+    }
+
+    .hamburger-menu {
+        display: block; /* Показываем гамбургер на мобильных */
+    }
+
+    .nav-links {
+        display: none; /* Скрываем ссылки по умолчанию на мобильных */
+        flex-direction: column; /* Элементы будут выстроены вертикально */
+        background-color: #005fa3; /* Фон для выдвигающегося меню */
+        position: absolute; /* Позиционируем меню абсолютно */
+        top: 100%; /* Под навигацией */
+        left: 0;
+        width: 100%; /* На всю ширину */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        padding: 10px 0;
+        transition: transform 0.3s ease-in-out; /* Анимация выдвижения */
+        transform: translateY(-100%); /* Изначально меню скрыто (сверху) */
+    }
+
+    .nav-links.active {
+        display: flex; /* Показываем меню при активном состоянии */
+        transform: translateY(0); /* Выдвигаем его */
+    }
+
+    nav a {
+        display: block; /* Ссылки на всю ширину внутри меню */
+        width: auto; /* Автоматическая ширина, чтобы padding работал нормально */
+        margin: 5px 15px; /* Отступы для каждой ссылки внутри выпадающего меню */
+        text-align: left; /* Выравниваем текст по левому краю */
+    }
+    /* === Конец стилей гамбургер-меню === */
+}
+
+/* Стили для ЛАЙТБОКСА-СЛАЙДЕРА */
+#lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease-in-out;
+}
+
+#lightbox.visible {
+    opacity: 1;
+    pointer-events: auto;
+    display: flex;
+}
+
+.lightbox-content {
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.lightbox-content.hide-image {
+    opacity: 0;
+}
+
+/* Стили для ПОДПИСИ изображения */
+#caption {
+    margin: 15px auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#caption.hide-caption {
+    opacity: 0;
+}
+
+/* Стили для КНОПКИ ЗАКРЫТИЯ */
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Стили для КНОПОК СЛАЙДЕРА (стрелок) */
+.prev-button, .next-button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 3px;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 10000;
+}
+
+.next-button {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-button {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.prev-button:hover, .next-button:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Оболочка для адаптивного видео */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) */
+    height: 0;
+    overflow: hidden;
+    max-width: 1200px; /* Максимальная ширина видео */
+    margin: 0 auto; /* ИСПРАВЛЕНО! Теперь видео будет по центру */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Добавил обратно тень */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block; /* Убеждаемся, что iframe ведет себя как блочный элемент */
+}
